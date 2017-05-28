@@ -1,0 +1,55 @@
+Front-end Class:
+Media Queries:
+	Let’s you change functionality based on browser size
+	In the CSS, you can have an @media tag, which allows you to overwrite styles with new styles. This is great for changing the styles when a user is on a mobile device.
+
+Font-size ‘rem’ is the number times the html’s base font size. So, if the HTML’s base font size is 10, and your font-size for a div is 2rem, then the font-size for that div will be 20.
+
+Grid Systems:
+	Good application of media queries
+
+Forms:
+	Wrap Your input tag and text in label to have the label also toggle the checkbox. Much better UX
+	$(jquery_obj).serializeArray() is a way to see all the form values
+	.val() on a jQuery object returns the value of that object
+	or, instead of .val(), you could do .is(‘:checked’) to see if a box was checked or not.
+
+The Box Model:
+	Padding goes inside the box, while margin goes outside of the box
+	Margin, padding, and border adds on to thi initial width of an element
+	If you don't want the above, you can use `box-sizing: border-box`
+		This does not apply to margin though. Does work for padding and border though
+	Top, Right, Bottom, Left => TRBL (Trouble)
+
+CSS Animations:
+	CSS property `transition`. It takes three values - what is being transitioned, how long you want it to last (seconds, milliseconds), and how it animates (`ease` for example)
+		`transition: all 1s ease;`
+	When implementing, you put the transition on the element. Then, in the CSS that changes the element on hover, you put the final product. They work together to take you from a to b with the transition value.
+	To get an element to move, set the margin in the second css thing to margin-left: 10% for example
+	There is actually a fourth property to transition that can delay the animation
+	@keyframe is like @media in that you can control that element in CSS. It controls the frames of the animation (start of, 30% done, 75% done, etc.).
+		`@keyframe pulse { baackground: black }`
+		Note that when the animation is complete (when @keyframe is used), it reverts back to what it was.
+
+`this`:
+	It's a Javascript object within its 'context'
+	For example, it loads the "Window" object when you console.log it at the top level, but if you log it inside of an object, it loads that object instead.
+
+flexbox:
+	Grid system that is now widely supported.
+	Set `display: flex` for the containter of divs. It will set the divs to be next to eachother in a row instead of a column each.
+
+	If you set flex-grow: 1, then each div will take up space evenly (apply flex-grow: 1 to each individual div or their class)
+	nth-child flex-grow: 5, allows you to set how much of the space one object in the collection takes up. gives you the ability to have a small box, big box, small box layout all on one row
+
+	justify-content can be used in conjuntion with flex because you can control to where the boxes are pushed. You can do justify-content: space-between to put in space between each underlying div
+
+	vertically align things - align-items: center. set the height of the container specifically. otherwise it will go to the height of the underlying boxes, which won't do anything
+
+	If you want it dead center of the page:
+		justify-content: center; align-items: center
+
+NPM (node package manager):
+	I should have a package.json setup (think requirements.txt). In there I should add linters for CSS and JS.
+	To run the scripts do npm run key (key is the key found within scripts.)
+

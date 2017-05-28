@@ -1,0 +1,106 @@
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Best Form</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+    <div class="row">
+      <div class="large-12 columns">
+        <h1>Form you must complete to become the best</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 medium-12 columns">
+
+        <h5>Fill out the below to reach awesome status</h5>
+
+        <div class="callout alert">
+		      <h5>You messed up the form good soul</h5>
+		    </div>
+
+    		<div class="callout success">
+    		  <h5>Right, off you go.</h5>
+    		</div>
+
+        <form action="#" name="form-1">
+          <div class="row">
+            <div class="large-12 medium-12 columns">
+              <label>What is your name?</label>
+              <input type="text" name="name-field" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="large-12 columns">
+              <label>What is your quest?</label>
+              <select id="quest">
+              	<option disabled selected value> -- Select an Option -- </option>
+                <option value="holy-grail">Find the Holy Grail</option>
+                <option value="rabbit">Kill a cute rabbit</option>
+                <option value="dead">Bring out all the dead</option>
+                <option value="horse">Ride a real horse</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="large-4 medium-4 columns">
+              <label>What is the airspeed velocity of an unladen swallow?</label>
+              	<input type="radio" name="swallow" value="african">
+              	<label for="african">African Swallow</label>
+
+              	<input type="radio" name="swallow" value="european">
+              	<label for="european">European Swallow</label>
+            </div>
+            <div class="large-8 medium-8 columns">
+              <label>Choose all your favorite colors?</label>
+
+              <div class="large-2 columns">
+              	<label for="green">
+              		<input value="green" type="checkbox" name="color-field">Green
+              	</label>
+              </div>
+              <div class="large-2 columns">
+              	<label for="blue">
+              		<input value="blue" type="checkbox" name="color-field">Blue
+              	</label>
+              </div>
+              <div class="large-2 columns">
+              	<label for="red">
+              		<input value="red" type="checkbox" name="color-field">Red
+              	</label>
+              </div>
+              <div class="large-2 columns">
+              	<label for="yellow">
+              		<input value="yellow" type="checkbox" name="color-field">Yellow
+              	</label>
+              </div>
+              <div class="large-4 columns">
+	            <label for="orange">
+	              <input value="orange" type="checkbox" name="color-field">Orange
+	            </label>
+              </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <a href="#" class="button" onclick="$(this).closest('form').submit()">Submit your form!</a>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

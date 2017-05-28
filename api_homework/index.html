@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic Page Needs –––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>NHL Playoffs Scores</title>
+  <meta name="description" content="Simple website showing the day's NHL scores">
+  <meta name="author" content="Zack Cooper">
+
+  <!-- Mobile Specific Metas ––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT –––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+
+  <!-- CSS ––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+
+  <!-- Favicon ––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="css/images/coop_logo.png">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="row center" style="margin-top: 2%">
+      <h4>NHL Scores</h4>
+    </div>
+
+    <div class="row" style="margin-top: 2%">
+      <label>Choose a date:
+        <input id="datepicker">
+      </label>
+    </div>
+
+    <div class="row">
+      <div class="six columns" id="leftColumn"></div>
+      <div class="six columns" id="rightColumn"></div>
+    </div>
+
+  <script id="hidden-template" type="text/x-custom-template">
+    <div class="game" style="margin-top: 2%">
+      <table class="scoreboard">
+        <tr>
+          <th>
+            <h6 id="homeTeam"></h6>
+          </th>
+          <th></th>
+          <th>
+            <h6 id="awayTeam"></h6>
+          </th>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="center" id="homeTeamShots"></div>
+          </td>
+          <td>
+            <div>Total Shots</div>
+          </td>
+          <td>
+            <div class="center"  id="awayTeamShots"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <div class="center"  id="homeTeamScore"></div>
+          </td>
+          <td>
+            <div>Final Score</div>
+          </td>
+          <td>
+            <div class="center"  id="awayTeamScore"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Location and Time: </td>
+          <td style="text-align: center" colspan="2">
+            <div id="locationTime"></div>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+  </script>
+
+
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
