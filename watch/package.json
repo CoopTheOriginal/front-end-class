@@ -1,0 +1,23 @@
+{
+  "name": "watch",
+  "version": "1.0.0",
+  "author": "Zack Cooper",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-latest": "^6.24.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0",
+    "node-sass": "^4.5.3",
+    "nodemon": "^1.11.0",
+    "serve": "^5.0.3",
+    "watchify": "^3.9.0"
+  },
+  "scripts": {
+    "start": "NODE_PATH=$NODE_PATH:$PWD/ watchify src/js/main.js -o public/js/main.bundle.js -dv & serve public & npm run watch-css",
+    "build-css": "./bin/build-css",
+    "watch-css": "./bin/watch-css"
+  },
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}

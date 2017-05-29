@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <title>What Time Is It?</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="icon" type="image/png" href="clock.jpg">
+</head>
+<body>
+
+  <div class="content-wrapper">
+
+    <!-- Time -->
+    <div class="splash content">
+      <h1>Coop's not so up to date clock</h1>
+      <h1 class="splash-head" id="time"></h1>
+      <p class="splash-subhead">
+      </p>
+      <p>
+          <a href="#" id="refresh" class="pure-button pure-button-primary">Refresh Time & Facts</a>
+      </p>
+    </div>
+
+
+    <!-- This Day In History -->
+    <h2 class="content-head is-center">This Day in History</h2>
+
+    <div class="content l-box-lrg pure-g">
+      <div class="pure-u-1-3">
+        <h3 class="content-subhead">Events</h3>
+        <ul class="events"></ul>
+      </div>
+
+      <div class="pure-u-1-3">
+        <h3 class="content-subhead">Born</h3>
+        <ul class="births"></ul>
+      </div>
+
+      <div class="pure-u-1-3">
+        <h3 class="content-subhead">Died</h3>
+        <ul class="deaths"></ul>
+      </div>
+    </div>
+
+
+      <!-- Brought To You By -->
+      <div class="splash l-box-lrg pure-g">
+        <div class="pure-u-1-2">
+          <h4 class="content-head-ribbon">Facts presented by: </br>http://history.muffinlabs.com/#api</h4>
+        </div>
+
+        <div class="pure-u-1-2">
+          <h4 class="content-head-ribbon">Clock presented by: </br>Coop's Clocks</h4>
+        </div>
+      </div>
+
+  </div>
+
+  <script src="js/main.bundle.js"></script>
+
+</body>
+</html>
