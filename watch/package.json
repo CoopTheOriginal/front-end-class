@@ -14,8 +14,8 @@
   },
   "scripts": {
     "start": "NODE_PATH=$NODE_PATH:$PWD/ watchify src/js/main.js -o public/js/main.bundle.js -dv & serve public & npm run watch-css",
-    "build-css": "./bin/build-css",
-    "watch-css": "./bin/watch-css"
+    "build-css": "node-sass --include-path scss scss/main.scss public/css/main.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "dependencies": {
     "jquery": "^3.1.1"
