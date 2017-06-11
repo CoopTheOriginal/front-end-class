@@ -53,3 +53,18 @@ NPM (node package manager):
 	I should have a package.json setup (think requirements.txt). In there I should add linters for CSS and JS.
 	To run the scripts do npm run key (key is the key found within scripts.)
 
+Running things in intervals
+	setTimeout(function, milliseconds) <= Does it once
+	setInterval(function, milliseconds) <= Keeps doing it
+
+Hoisting
+	Should generally declare a vunction with var instead of function
+
+var, const, & let
+	let and const can't be redeclared
+	let is scope constrained. Let's say you define let within a scope and outside a scope. If you change the let variable inside the scope, it won't affect the let variable outside the scope
+	when you put let bar = 1, it overwrites any preexisting instances of bar. If you just do bar = 1 (no let in front) then it has to exist already. Better example, you need to use `var` before the variable name the first time. If you don't, then it will create that variable as a global variable
+
+loops
+	Array.forEach(item, index) => { do something }
+

@@ -1,0 +1,17 @@
+{
+  "name": "dad_jokes",
+  "version": "1.0.0",
+  "description": "Dad Joke list",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_PATH=$NODE_PATH:$PWD/ serve public"
+  },
+  "author": "Zack Cooper",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "serve": "^5.2.2",
+    "stylus-type-utils": "0.0.3",
+    "watchify": "^3.9.0"
+  }
+}

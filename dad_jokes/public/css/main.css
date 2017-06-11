@@ -1,0 +1,44 @@
+body {
+  background-color: #89C4F4;
+  color: #003171;
+}
+
+h5 {
+  margin-bottom: 0px;
+}
+
+.button {
+  background-color: #48929B;
+}
+
+.buffer {
+  margin-bottom: 3%;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: .5rem;
+  background-color: #48929B;
+  color: #fefefe;
+}
+
+.checkBox {
+  margin-left: 30%;
+}
+
+[type='checkbox'] {
+  margin: 0 0 0rem;
+}
+
+th,
+tr,
+td {
+  background-color: #89C4F4;
+}
+
+.noBottomPadding {
+  padding-bottom: 0em;
+}
