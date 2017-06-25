@@ -68,3 +68,34 @@ var, const, & let
 loops
 	Array.forEach(item, index) => { do something }
 
+SVG
+	Basically a scalable image.
+	Can be used just like other elements -
+	<svg width="100">
+		<cirlce cx="50" cy="50" stroke="blue">
+	</svg>
+	You can use a `viewbox` property in an svg element for scaling to screen size
+		The viewbox property basically says that any element below will scale, otherwise it's just pixels.
+
+	Also, if you have a .svg file, then you can edit the file's contens, just like you would HTML
+
+CSS: Image Filters
+	filter property on images that you can edit. for example - filter: blur(20px); greyscale(20%);
+
+CSS Grid
+	display: grid property exists for any element
+	grid-template-columns: 1fr, 1fr, 2fr (results in three columns with the far right column being twice as big as the first and second columns)
+	grid-template-rows exists too
+
+Viewport Unites:
+	vh (height) and vw (width) are the units and it represents % of the entire window.
+	There is also vmax
+	Still assign the above values to height and width
+
+Javascript: intro to server side JS with Express
+
+
+Heroku
+
+
+React: Intro

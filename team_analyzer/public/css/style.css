@@ -1,0 +1,96 @@
+body {
+  background: #6A9E98;
+  color: #00352F;
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  font-size: 25px;
+}
+
+.header {
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 10%;
+}
+
+.first {
+  grid-column: 1;
+}
+
+.question {
+  grid-column: 2 / 6;
+  grid-row: 1;
+  text-align: left;
+  line-height: 50px;
+}
+
+.narrative {
+  grid-column: 1/ 6;
+  grid-row: 2;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dropdown select {
+  background-color: #0D4F48;
+  color: #6A9E98;
+  font-size: inherit;
+  padding: .5em;
+  padding-right: 2.5em;
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+}
+
+.dropdown::before,
+.dropdown::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.dropdown::after { /*  Custom dropdown arrow */
+  content: "\25BC";
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  right: 1.2em;
+  top: 50%;
+  margin-top: -.5em;
+}
+
+.dropdown::before { /*  Custom dropdown arrow cover */
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.dropdown select[disabled] {
+  color: rgba(0,0,0,.3);
+}
+
+.dropdown select[disabled]::after {
+  color: rgba(0,0,0,.1);
+}
+
+.dropdown::before {
+  background-color: rgba(0,0,0,.15);
+}
+
+.dropdown::after {
+  color: rgba(0,0,0,.4);
+}
