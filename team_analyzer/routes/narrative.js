@@ -4,7 +4,6 @@ const dotenv = require('dotenv').config()
 const rp = require('request-promise');
 
 router.get('/narrative/:selection', function(req, res, next) {
-  console.log(process.env.WORDSMITH_API)
   var options = {
     method: 'POST',
     uri: `https://api.automatedinsights.com/v1.5/projects/project/templates/template/outputs`,
