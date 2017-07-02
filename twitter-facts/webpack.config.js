@@ -20,7 +20,9 @@ module.exports = {
       allChunks: true,
     }),
     new HtmlWebpackPlugin({
-      template: './index.html'
+      template: './index.html',
+      inject: 'head',
+      favicon: './images/favicon.png'
     })
   ],
   node: {

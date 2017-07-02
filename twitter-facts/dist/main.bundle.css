@@ -1,6 +1,11 @@
 body {
   font: 100% Helvetica, sans-serif;
-  color: #333; }
+  color: #333;
+  padding: 1%; }
 
 p {
   color: red; }
+
+h1 {
+  text-align: center;
+  color: #989; }

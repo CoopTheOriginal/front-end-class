@@ -1,11 +1,18 @@
-$font-stack:    Helvetica, sans-serif;
+$font-stack: Helvetica, sans-serif;
 $primary-color: #333;
+$secondary-color: #989;
 
 body {
   font: 100% $font-stack;
   color: $primary-color;
+  padding: 1%
 }
 
 p {
   color: red;
+}
+
+h1 {
+  text-align: center;
+  color: $secondary-color;
 }
