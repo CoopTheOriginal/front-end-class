@@ -92,10 +92,15 @@ Viewport Unites:
 	There is also vmax
 	Still assign the above values to height and width
 
-Javascript: intro to server side JS with Express
-
-
-Heroku
-
-
 React: Intro
+	component - has a render method and returns HTML. You can import components within components
+	Props get passed from parent to child
+	React re-renders when something changes, which makes things simpler
+	Can set default state like this - constructor(props) { this.state = { number: 10 }}
+	Props and state are the two ways of passing data around
+	Two kinds of components: class based and stateless functional components
+	CSS Modules:
+
+	Other:
+		Curly braces means print out inside of me
+

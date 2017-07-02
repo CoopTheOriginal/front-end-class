@@ -1,0 +1,28 @@
+{
+  "name": "twitter-facts",
+  "version": "1.0.0",
+  "description": "Random facts about Twitter",
+  "main": "index.js",
+  "scripts": {
+    "start": "node js",
+    "build": "webpack",
+    "dev": "webpack-dev-server"
+  },
+  "author": "Zack Cooper",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/username/repository.git"
+  },
+  "dependencies": {
+    "har-validator": "^4.2.1",
+    "moment": "^2.18.1",
+    "node-sass": "^4.5.3",
+    "request": "^2.79.0",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.5.0"
+  }
+}
