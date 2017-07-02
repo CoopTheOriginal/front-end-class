@@ -1,18 +1,129 @@
 $font-stack: Helvetica, sans-serif;
-$primary-color: #333;
-$secondary-color: #989;
+$grey: #3f3f3d;
+$orange: #e54f34;
+$yellow: #f4d746;
+$white: #f0f0f0;
 
-body {
-  font: 100% $font-stack;
-  color: $primary-color;
-  padding: 1%
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-p {
-  color: red;
+html {
+  background-color: $white;
+}
+
+body {
+  color: $grey;
+  font-family: 'Roboto','Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  padding: 1rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga" on;
 }
 
 h1 {
+  color: $orange;
+  font-size: 300%;
+  margin: 0px;
   text-align: center;
-  color: $secondary-color;
 }
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.time {
+  margin: 10px;
+  font-size: 200%;
+  color: $grey;
+  text-align: center;
+}
+
+
+
+
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cardsItem {
+  display: flex;
+  padding: 1rem;
+  @media(min-width: 40rem) {
+    width: 50%;
+  }
+  @media(min-width: 56rem) {
+    width: 33.3333%;
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  &:hover {
+    .cardImage {
+      filter: contrast(100%);
+    }
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.cardImage {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  filter: contrast(70%);
+  overflow: hidden;
+  position: relative;
+  transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);;
+  &::before {
+    content: "";
+    display: block;
+    padding-top: 56.25%; // 16:9 aspect ratio
+  }
+  @media(min-width: 40rem) {
+    &::before {
+      padding-top: 66.6%; // 3:2 aspect ratio
+    }
+  }
+}
+
+.cardTitle {
+  color: $orange;
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.cardText {
+  flex: 1 1 auto;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
