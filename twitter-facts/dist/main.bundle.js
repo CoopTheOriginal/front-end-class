@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 273);
+/******/ 	return __webpack_require__(__webpack_require__.s = 435);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -6891,7 +6891,7 @@ function isPrimitive(arg) {
 }
 exports.isPrimitive = isPrimitive;
 
-exports.isBuffer = __webpack_require__(428);
+exports.isBuffer = __webpack_require__(429);
 
 function objectToString(o) {
   return Object.prototype.toString.call(o);
@@ -6935,7 +6935,7 @@ exports.log = function() {
  *     prototype.
  * @param {function} superCtor Constructor function to inherit prototype from.
  */
-exports.inherits = __webpack_require__(427);
+exports.inherits = __webpack_require__(428);
 
 exports._extend = function(origin, add) {
   // Don't do anything if add isn't an object
@@ -13381,7 +13381,7 @@ Signature._oldVersionDetect = function (obj) {
 
 
 var punycode = __webpack_require__(70);
-var util = __webpack_require__(425);
+var util = __webpack_require__(426);
 
 exports.parse = urlParse;
 exports.resolve = urlResolve;
@@ -14100,7 +14100,7 @@ Url.prototype.parseHost = function() {
 // If you have no idea what ASN.1 or BER is, see this:
 // ftp://ftp.rsa.com/pub/pkcs/ascii/layman.asc
 
-var Ber = __webpack_require__(267);
+var Ber = __webpack_require__(268);
 
 
 
@@ -18501,7 +18501,7 @@ nacl.setPRNG = function(fn) {
     });
   } else if (true) {
     // Node.js.
-    crypto = __webpack_require__(433);
+    crypto = __webpack_require__(434);
     if (crypto && crypto.randomBytes) {
       nacl.setPRNG(function(x, n) {
         var i, v = crypto.randomBytes(n);
@@ -18605,11 +18605,11 @@ var asn1 = exports;
 
 asn1.bignum = __webpack_require__(6);
 
-asn1.define = __webpack_require__(259).define;
+asn1.define = __webpack_require__(260).define;
 asn1.base = __webpack_require__(33);
 asn1.constants = __webpack_require__(82);
-asn1.decoders = __webpack_require__(263);
-asn1.encoders = __webpack_require__(265);
+asn1.decoders = __webpack_require__(264);
+asn1.encoders = __webpack_require__(266);
 
 
 /***/ }),
@@ -18618,10 +18618,10 @@ asn1.encoders = __webpack_require__(265);
 
 var base = exports;
 
-base.Reporter = __webpack_require__(261).Reporter;
+base.Reporter = __webpack_require__(262).Reporter;
 base.DecoderBuffer = __webpack_require__(81).DecoderBuffer;
 base.EncoderBuffer = __webpack_require__(81).EncoderBuffer;
-base.Node = __webpack_require__(260);
+base.Node = __webpack_require__(261);
 
 
 /***/ }),
@@ -24083,7 +24083,7 @@ util.inherits = __webpack_require__(2);
 
 /*<replacement>*/
 var internalUtil = {
-  deprecate: __webpack_require__(426)
+  deprecate: __webpack_require__(427)
 };
 /*</replacement>*/
 
@@ -25759,7 +25759,7 @@ constants._reverse = function reverse(map) {
   return res;
 };
 
-constants.der = __webpack_require__(262);
+constants.der = __webpack_require__(263);
 
 
 /***/ }),
@@ -27015,7 +27015,7 @@ if (typeof self === 'object') {
 } else {
   // Node.js or Web worker with no crypto support
   try {
-    var crypto = __webpack_require__(431);
+    var crypto = __webpack_require__(432);
     if (typeof crypto.randomBytes !== 'function')
       throw new Error('Not supported');
 
@@ -40114,7 +40114,7 @@ util.inherits = __webpack_require__(2);
 /*</replacement>*/
 
 /*<replacement>*/
-var debugUtil = __webpack_require__(432);
+var debugUtil = __webpack_require__(433);
 var debug = void 0;
 if (debugUtil && debugUtil.debuglog) {
   debug = debugUtil.debuglog('stream');
@@ -44049,320 +44049,31 @@ function extend() {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(console) {
 
+var _moment = __webpack_require__(0);
 
-/**
- * Module dependencies
- */
+var _moment2 = _interopRequireDefault(_moment);
 
-var url = __webpack_require__(21);
-var Streamparser = __webpack_require__(423);
-var request = __webpack_require__(376);
-var extend = __webpack_require__(293);
+var _twitter = __webpack_require__(424);
 
-// Package version
-var VERSION = __webpack_require__(424).version;
+var _twitter2 = _interopRequireDefault(_twitter);
 
-function Twitter(options) {
-  if (!(this instanceof Twitter)) { return new Twitter(options) }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-  this.VERSION = VERSION;
-
-  // Merge the default options with the client submitted options
-  this.options = extend({
-    consumer_key: null,
-    consumer_secret: null,
-    access_token_key: null,
-    access_token_secret: null,
-    bearer_token: null,
-    rest_base: 'https://api.twitter.com/1.1',
-    stream_base: 'https://stream.twitter.com/1.1',
-    user_stream_base: 'https://userstream.twitter.com/1.1',
-    site_stream_base: 'https://sitestream.twitter.com/1.1',
-    media_base: 'https://upload.twitter.com/1.1',
-    request_options: {
-      headers: {
-        Accept: '*/*',
-        Connection: 'close',
-        'User-Agent': 'node-twitter/' + VERSION
-      }
-    }
-  }, options);
-
-  // Default to user authentication
-  var authentication_options = {
-    oauth: {
-      consumer_key: this.options.consumer_key,
-      consumer_secret: this.options.consumer_secret,
-      token: this.options.access_token_key,
-      token_secret: this.options.access_token_secret
-    }
-  };
-
-  // Check to see if we are going to use User Authentication or Application Authetication
-  if (this.options.bearer_token) {
-    authentication_options = {
-      headers: {
-        Authorization: 'Bearer ' + this.options.bearer_token
-      }
-    };
-  }
-
-  // Configure default request options
-  this.request = request.defaults(
-    extend(
-      this.options.request_options,
-      authentication_options
-    )
-  );
-
-  // Check if Promise present
-  this.allow_promise = (typeof Promise === 'function');
-}
-
-Twitter.prototype.__buildEndpoint = function(path, base) {
-  var bases = {
-    'rest': this.options.rest_base,
-    'stream': this.options.stream_base,
-    'user_stream': this.options.user_stream_base,
-    'site_stream': this.options.site_stream_base,
-    'media': this.options.media_base
-  };
-  var endpoint = (bases.hasOwnProperty(base)) ? bases[base] : bases.rest;
-  // if full url is specified we use that
-  var isFullUrl = (url.parse(path).protocol !== null);
-  if (isFullUrl) {
-    endpoint = path;
-  }
-  else {
-    // If the path begins with media or /media
-    if (path.match(/^(\/)?media/)) {
-      endpoint = bases.media;
-    }
-    endpoint += (path.charAt(0) === '/') ? path : '/' + path;
-  }
-
-  // Remove trailing slash
-  endpoint = endpoint.replace(/\/$/, '');
-
-  if(!isFullUrl) {
-    // Add json extension if not provided in call... only if a full url is not specified
-    endpoint += (path.split('.').pop() !== 'json') ? '.json' : '';
-  }
-
-  return endpoint;
-};
-
-Twitter.prototype.__request = function(method, path, params, callback) {
-  var base = 'rest', promise = false;
-
-  // Set the callback if no params are passed
-  if (typeof params === 'function') {
-    callback = params;
-    params = {};
-  }
-  // Return promise if no callback is passed and promises available
-  else if (callback === undefined && this.allow_promise) {
-    promise = true;
-  }
-
-  // Set API base
-  if (typeof params.base !== 'undefined') {
-    base = params.base;
-    delete params.base;
-  }
-
-  // Build the options to pass to our custom request object
-  var options = {
-    method: method.toLowerCase(),  // Request method - get || post
-    url: this.__buildEndpoint(path, base) // Generate url
-  };
-
-  // Pass url parameters if get
-  if (method === 'get') {
-    options.qs = params;
-  }
-
-  // Pass form data if post
-  if (method === 'post') {
-    var formKey = 'form';
-
-    if (typeof params.media !== 'undefined') {
-      formKey = 'formData';
-    }
-    options[formKey] = params;
-  }
-
-  // Promisified version
-  if (promise) {
-    var _this = this;
-    return new Promise(function(resolve, reject) {
-      _this.request(options, function(error, response, data) {
-        // request error
-        if (error) {
-          return reject(error);
-        }
-
-        // JSON parse error or empty strings
-        try {
-          // An empty string is a valid response
-          if (data === '') {
-            data = {};
-          }
-          else {
-            data = JSON.parse(data);
-          }
-        }
-        catch(parseError) {
-          return reject(new Error('JSON parseError with HTTP Status: ' + response.statusCode + ' ' + response.statusMessage));
-        }
-
-        // response object errors
-        // This should return an error object not an array of errors
-        if (data.errors !== undefined) {
-          return reject(data.errors);
-        }
-
-        // status code errors
-        if(response.statusCode < 200 || response.statusCode > 299) {
-          return reject(new Error('HTTP Error: ' + response.statusCode + ' ' + response.statusMessage));
-        }
-
-        // no errors
-        resolve(data);
-      });
-    });
-  }
-
-  // Callback version
-  this.request(options, function(error, response, data) {
-    // request error
-    if (error) {
-      return callback(error, data, response);
-    }
-
-    // JSON parse error or empty strings
-    try {
-      // An empty string is a valid response
-      if (data === '') {
-        data = {};
-      }
-      else {
-        data = JSON.parse(data);
-      }
-    }
-    catch(parseError) {
-      return callback(
-        new Error('JSON parseError with HTTP Status: ' + response.statusCode + ' ' + response.statusMessage),
-        data,
-        response
-      );
-    }
-
-
-    // response object errors
-    // This should return an error object not an array of errors
-    if (data.errors !== undefined) {
-      return callback(data.errors, data, response);
-    }
-
-    // status code errors
-    if(response.statusCode < 200 || response.statusCode > 299) {
-      return callback(
-        new Error('HTTP Error: ' + response.statusCode + ' ' + response.statusMessage),
-        data,
-        response
-      );
-    }
-    // no errors
-    callback(null, data, response);
-  });
-
-};
-
-/**
- * GET
- */
-Twitter.prototype.get = function(url, params, callback) {
-  return this.__request('get', url, params, callback);
-};
-
-/**
- * POST
- */
-Twitter.prototype.post = function(url, params, callback) {
-  return this.__request('post', url, params, callback);
-};
-
-/**
- * STREAM
- */
-Twitter.prototype.stream = function(method, params, callback) {
-  if (typeof params === 'function') {
-    callback = params;
-    params = {};
-  }
-
-  var base = 'stream';
-
-  if (method === 'user' || method === 'site') {
-    base = method + '_' + base;
-  }
-
-  var url = this.__buildEndpoint(method, base);
-  var request = this.request({url: url, qs: params});
-  var stream = new Streamparser();
-
-  stream.destroy = function() {
-    // FIXME: should we emit end/close on explicit destroy?
-    if ( typeof request.abort === 'function' ) {
-      request.abort(); // node v0.4.0
-    }
-    else {
-      request.socket.destroy();
-    }
-  };
-
-  request.on('response', function(response) {
-    if(response.statusCode !== 200) {
-      stream.emit('error', new Error('Status Code: ' + response.statusCode));
-    }
-    else {
-      stream.emit('response', response);
-    }
-
-    response.on('data', function(chunk) {
-      stream.receive(chunk);
-    });
-
-    response.on('error', function(error) {
-      stream.emit('error', error);
-    });
-
-    response.on('end', function() {
-      stream.emit('end', response);
-    });
-  });
-
-  request.on('error', function(error) {
-    stream.emit('error', error);
-  });
-  request.end();
-
-  if (typeof callback === 'function') {
-    callback(stream);
-  }
-  else {
-    return stream;
-  }
-};
-
-
-module.exports = Twitter;
-
+var rightNow = (0, _moment2.default)().format('MMMM Do YYYY, h:mm:ss a');
+console.log(rightNow);
+console.log('hi');
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18)))
 
 /***/ }),
 /* 259 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var asn1 = __webpack_require__(32);
@@ -44385,7 +44096,7 @@ function Entity(name, body) {
 Entity.prototype._createNamed = function createNamed(base) {
   var named;
   try {
-    named = __webpack_require__(430).runInThisContext(
+    named = __webpack_require__(431).runInThisContext(
       '(function ' + this.name + '(entity) {\n' +
       '  this._initNamed(entity);\n' +
       '})'
@@ -44429,7 +44140,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
 
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Reporter = __webpack_require__(33).Reporter;
@@ -45069,7 +44780,7 @@ Node.prototype._isPrintstr = function isPrintstr(str) {
 
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var inherits = __webpack_require__(2);
@@ -45196,7 +44907,7 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
 
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var constants = __webpack_require__(82);
@@ -45244,17 +44955,17 @@ exports.tagByName = constants._reverse(exports.tag);
 
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var decoders = exports;
 
 decoders.der = __webpack_require__(83);
-decoders.pem = __webpack_require__(264);
+decoders.pem = __webpack_require__(265);
 
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var inherits = __webpack_require__(2);
@@ -45309,17 +45020,17 @@ PEMDecoder.prototype.decode = function decode(data, options) {
 
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var encoders = exports;
 
 encoders.der = __webpack_require__(84);
-encoders.pem = __webpack_require__(266);
+encoders.pem = __webpack_require__(267);
 
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var inherits = __webpack_require__(2);
@@ -45346,7 +45057,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
 
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
@@ -45354,8 +45065,8 @@ PEMEncoder.prototype.encode = function encode(data, options) {
 var errors = __webpack_require__(62);
 var types = __webpack_require__(63);
 
-var Reader = __webpack_require__(268);
-var Writer = __webpack_require__(269);
+var Reader = __webpack_require__(269);
+var Writer = __webpack_require__(270);
 
 
 ///--- Exports
@@ -45379,7 +45090,7 @@ for (var e in errors) {
 
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {// Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
@@ -45647,7 +45358,7 @@ module.exports = Reader;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1).Buffer))
 
 /***/ }),
-/* 269 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {// Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
@@ -45970,7 +45681,7 @@ module.exports = Writer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1).Buffer))
 
 /***/ }),
-/* 270 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -46188,14 +45899,14 @@ module.exports.canonicalizeResource = canonicalizeResource
 
 
 /***/ }),
-/* 271 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer, process) {var aws4 = exports,
     url = __webpack_require__(21),
     querystring = __webpack_require__(39),
     crypto = __webpack_require__(7),
-    lru = __webpack_require__(272),
+    lru = __webpack_require__(273),
     credentialsCache = lru(1000)
 
 // http://docs.amazonwebservices.com/general/latest/gr/signature-version-4.html
@@ -46527,7 +46238,7 @@ aws4.sign = function(request, credentials) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1).Buffer, __webpack_require__(4)))
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, exports) {
 
 module.exports = function(size) {
@@ -46627,28 +46338,6 @@ function DoublyLinkedNode(key, val) {
   this.next = null
 }
 
-
-/***/ }),
-/* 273 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(console) {
-
-var _moment = __webpack_require__(0);
-
-var _moment2 = _interopRequireDefault(_moment);
-
-var _twitter = __webpack_require__(258);
-
-var _twitter2 = _interopRequireDefault(_twitter);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var rightNow = (0, _moment2.default)().format('MMMM Do YYYY, h:mm:ss a');
-console.log(rightNow);
-console.log('hi');
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18)))
 
 /***/ }),
 /* 274 */
@@ -57929,7 +57618,7 @@ var mod_assert = __webpack_require__(345);
 var mod_util = __webpack_require__(3);
 
 var mod_extsprintf = __webpack_require__(100);
-var mod_verror = __webpack_require__(429);
+var mod_verror = __webpack_require__(430);
 var mod_jsonschema = __webpack_require__(341);
 
 /*
@@ -77804,8 +77493,8 @@ var http = __webpack_require__(46)
   , stream = __webpack_require__(15)
   , zlib = __webpack_require__(286)
   , hawk = __webpack_require__(329)
-  , aws2 = __webpack_require__(270)
-  , aws4 = __webpack_require__(271)
+  , aws2 = __webpack_require__(271)
+  , aws4 = __webpack_require__(272)
   , httpSignature = __webpack_require__(331)
   , mime = __webpack_require__(348)
   , stringstream = __webpack_require__(418)
@@ -82548,6 +82237,323 @@ Parser.prototype.receive = function receive(buffer) {
 
 /***/ }),
 /* 424 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Module dependencies
+ */
+
+var url = __webpack_require__(21);
+var Streamparser = __webpack_require__(423);
+var request = __webpack_require__(376);
+var extend = __webpack_require__(293);
+
+// Package version
+var VERSION = __webpack_require__(425).version;
+
+function Twitter(options) {
+  if (!(this instanceof Twitter)) { return new Twitter(options) }
+
+  this.VERSION = VERSION;
+
+  // Merge the default options with the client submitted options
+  this.options = extend({
+    consumer_key: null,
+    consumer_secret: null,
+    access_token_key: null,
+    access_token_secret: null,
+    bearer_token: null,
+    rest_base: 'https://api.twitter.com/1.1',
+    stream_base: 'https://stream.twitter.com/1.1',
+    user_stream_base: 'https://userstream.twitter.com/1.1',
+    site_stream_base: 'https://sitestream.twitter.com/1.1',
+    media_base: 'https://upload.twitter.com/1.1',
+    request_options: {
+      headers: {
+        Accept: '*/*',
+        Connection: 'close',
+        'User-Agent': 'node-twitter/' + VERSION
+      }
+    }
+  }, options);
+
+  // Default to user authentication
+  var authentication_options = {
+    oauth: {
+      consumer_key: this.options.consumer_key,
+      consumer_secret: this.options.consumer_secret,
+      token: this.options.access_token_key,
+      token_secret: this.options.access_token_secret
+    }
+  };
+
+  // Check to see if we are going to use User Authentication or Application Authetication
+  if (this.options.bearer_token) {
+    authentication_options = {
+      headers: {
+        Authorization: 'Bearer ' + this.options.bearer_token
+      }
+    };
+  }
+
+  // Configure default request options
+  this.request = request.defaults(
+    extend(
+      this.options.request_options,
+      authentication_options
+    )
+  );
+
+  // Check if Promise present
+  this.allow_promise = (typeof Promise === 'function');
+}
+
+Twitter.prototype.__buildEndpoint = function(path, base) {
+  var bases = {
+    'rest': this.options.rest_base,
+    'stream': this.options.stream_base,
+    'user_stream': this.options.user_stream_base,
+    'site_stream': this.options.site_stream_base,
+    'media': this.options.media_base
+  };
+  var endpoint = (bases.hasOwnProperty(base)) ? bases[base] : bases.rest;
+  // if full url is specified we use that
+  var isFullUrl = (url.parse(path).protocol !== null);
+  if (isFullUrl) {
+    endpoint = path;
+  }
+  else {
+    // If the path begins with media or /media
+    if (path.match(/^(\/)?media/)) {
+      endpoint = bases.media;
+    }
+    endpoint += (path.charAt(0) === '/') ? path : '/' + path;
+  }
+
+  // Remove trailing slash
+  endpoint = endpoint.replace(/\/$/, '');
+
+  if(!isFullUrl) {
+    // Add json extension if not provided in call... only if a full url is not specified
+    endpoint += (path.split('.').pop() !== 'json') ? '.json' : '';
+  }
+
+  return endpoint;
+};
+
+Twitter.prototype.__request = function(method, path, params, callback) {
+  var base = 'rest', promise = false;
+
+  // Set the callback if no params are passed
+  if (typeof params === 'function') {
+    callback = params;
+    params = {};
+  }
+  // Return promise if no callback is passed and promises available
+  else if (callback === undefined && this.allow_promise) {
+    promise = true;
+  }
+
+  // Set API base
+  if (typeof params.base !== 'undefined') {
+    base = params.base;
+    delete params.base;
+  }
+
+  // Build the options to pass to our custom request object
+  var options = {
+    method: method.toLowerCase(),  // Request method - get || post
+    url: this.__buildEndpoint(path, base) // Generate url
+  };
+
+  // Pass url parameters if get
+  if (method === 'get') {
+    options.qs = params;
+  }
+
+  // Pass form data if post
+  if (method === 'post') {
+    var formKey = 'form';
+
+    if (typeof params.media !== 'undefined') {
+      formKey = 'formData';
+    }
+    options[formKey] = params;
+  }
+
+  // Promisified version
+  if (promise) {
+    var _this = this;
+    return new Promise(function(resolve, reject) {
+      _this.request(options, function(error, response, data) {
+        // request error
+        if (error) {
+          return reject(error);
+        }
+
+        // JSON parse error or empty strings
+        try {
+          // An empty string is a valid response
+          if (data === '') {
+            data = {};
+          }
+          else {
+            data = JSON.parse(data);
+          }
+        }
+        catch(parseError) {
+          return reject(new Error('JSON parseError with HTTP Status: ' + response.statusCode + ' ' + response.statusMessage));
+        }
+
+        // response object errors
+        // This should return an error object not an array of errors
+        if (data.errors !== undefined) {
+          return reject(data.errors);
+        }
+
+        // status code errors
+        if(response.statusCode < 200 || response.statusCode > 299) {
+          return reject(new Error('HTTP Error: ' + response.statusCode + ' ' + response.statusMessage));
+        }
+
+        // no errors
+        resolve(data);
+      });
+    });
+  }
+
+  // Callback version
+  this.request(options, function(error, response, data) {
+    // request error
+    if (error) {
+      return callback(error, data, response);
+    }
+
+    // JSON parse error or empty strings
+    try {
+      // An empty string is a valid response
+      if (data === '') {
+        data = {};
+      }
+      else {
+        data = JSON.parse(data);
+      }
+    }
+    catch(parseError) {
+      return callback(
+        new Error('JSON parseError with HTTP Status: ' + response.statusCode + ' ' + response.statusMessage),
+        data,
+        response
+      );
+    }
+
+
+    // response object errors
+    // This should return an error object not an array of errors
+    if (data.errors !== undefined) {
+      return callback(data.errors, data, response);
+    }
+
+    // status code errors
+    if(response.statusCode < 200 || response.statusCode > 299) {
+      return callback(
+        new Error('HTTP Error: ' + response.statusCode + ' ' + response.statusMessage),
+        data,
+        response
+      );
+    }
+    // no errors
+    callback(null, data, response);
+  });
+
+};
+
+/**
+ * GET
+ */
+Twitter.prototype.get = function(url, params, callback) {
+  return this.__request('get', url, params, callback);
+};
+
+/**
+ * POST
+ */
+Twitter.prototype.post = function(url, params, callback) {
+  return this.__request('post', url, params, callback);
+};
+
+/**
+ * STREAM
+ */
+Twitter.prototype.stream = function(method, params, callback) {
+  if (typeof params === 'function') {
+    callback = params;
+    params = {};
+  }
+
+  var base = 'stream';
+
+  if (method === 'user' || method === 'site') {
+    base = method + '_' + base;
+  }
+
+  var url = this.__buildEndpoint(method, base);
+  var request = this.request({url: url, qs: params});
+  var stream = new Streamparser();
+
+  stream.destroy = function() {
+    // FIXME: should we emit end/close on explicit destroy?
+    if ( typeof request.abort === 'function' ) {
+      request.abort(); // node v0.4.0
+    }
+    else {
+      request.socket.destroy();
+    }
+  };
+
+  request.on('response', function(response) {
+    if(response.statusCode !== 200) {
+      stream.emit('error', new Error('Status Code: ' + response.statusCode));
+    }
+    else {
+      stream.emit('response', response);
+    }
+
+    response.on('data', function(chunk) {
+      stream.receive(chunk);
+    });
+
+    response.on('error', function(error) {
+      stream.emit('error', error);
+    });
+
+    response.on('end', function() {
+      stream.emit('end', response);
+    });
+  });
+
+  request.on('error', function(error) {
+    stream.emit('error', error);
+  });
+  request.end();
+
+  if (typeof callback === 'function') {
+    callback(stream);
+  }
+  else {
+    return stream;
+  }
+};
+
+
+module.exports = Twitter;
+
+
+/***/ }),
+/* 425 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -82615,7 +82621,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 425 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82638,7 +82644,7 @@ module.exports = {
 
 
 /***/ }),
-/* 426 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(console, global) {
@@ -82712,7 +82718,7 @@ function config (name) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18), __webpack_require__(9)))
 
 /***/ }),
-/* 427 */
+/* 428 */
 /***/ (function(module, exports) {
 
 if (typeof Object.create === 'function') {
@@ -82741,7 +82747,7 @@ if (typeof Object.create === 'function') {
 
 
 /***/ }),
-/* 428 */
+/* 429 */
 /***/ (function(module, exports) {
 
 module.exports = function isBuffer(arg) {
@@ -82752,7 +82758,7 @@ module.exports = function isBuffer(arg) {
 }
 
 /***/ }),
-/* 429 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -82915,7 +82921,7 @@ WError.prototype.cause = function we_cause(c)
 
 
 /***/ }),
-/* 430 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var indexOf = __webpack_require__(336);
@@ -83059,12 +83065,6 @@ exports.createContext = Script.createContext = function (context) {
 
 
 /***/ }),
-/* 431 */
-/***/ (function(module, exports) {
-
-/* (ignored) */
-
-/***/ }),
 /* 432 */
 /***/ (function(module, exports) {
 
@@ -83075,6 +83075,20 @@ exports.createContext = Script.createContext = function (context) {
 /***/ (function(module, exports) {
 
 /* (ignored) */
+
+/***/ }),
+/* 434 */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ }),
+/* 435 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(258);
+module.exports = __webpack_require__(259);
+
 
 /***/ })
 /******/ ]);
