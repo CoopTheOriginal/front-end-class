@@ -93,7 +93,16 @@ img {
   text-transform: uppercase; }
 
 .cardText {
-  flex: 1 1 auto;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  margin-bottom: 1.25rem; }
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-column-gap: 1px; }
+
+.number {
+  font-size: 5rem;
+  display: flex;
+  align-items: right; }
+
+.mentionsSince {
+  font-size: 1rem;
+  display: flex;
+  align-items: left; }

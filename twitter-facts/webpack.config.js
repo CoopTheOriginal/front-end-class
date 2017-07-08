@@ -1,7 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin =  require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
@@ -23,7 +25,14 @@ module.exports = {
       template: './index.html',
       inject: 'head',
       favicon: './images/favicon.png'
-    })
+    }),
+    new Dotenv({
+      path: './.env',
+      safe: false
+    }),
+    new CopyWebpackPlugin(
+      [{ from: 'images', to: 'images' }]
+    )
   ],
   node: {
     fs: 'empty',

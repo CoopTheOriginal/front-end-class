@@ -104,12 +104,6 @@ img {
   &::before {
     content: "";
     display: block;
-    padding-top: 56.25%; // 16:9 aspect ratio
-  }
-  @media(min-width: 40rem) {
-    &::before {
-      padding-top: 66.6%; // 3:2 aspect ratio
-    }
   }
 }
 
@@ -121,9 +115,21 @@ img {
 }
 
 .cardText {
-  flex: 1 1 auto;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  margin-bottom: 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 1px;
+}
+
+.number {
+  font-size: 5rem;
+  display: flex;
+  text-align: right;
+}
+
+.mentionsSince {
+  font-size: 1.5rem;
+  display: flex;
+  text-align: left;
 }
 
