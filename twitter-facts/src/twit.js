@@ -23,15 +23,15 @@ let runTwitter = client.stream('statuses/filter', params, (stream) => {
 
     updateStat('totalCount')
 
-    if(['fuck', 'damn', 'shit', 'bitch', 'Fuck', 'Damn', 'Shit', 'Bitch'].indexOf(tweet.text) >= 0){
+    if(['fuck', 'damn', 'shit', 'bitch'].indexOf(tweet.text.toLowerCase()) >= 0){
       badCount += 1;
       badPercent = percentage(badCount, totalCount);
     };
-    if(['Putin', 'putin'].indexOf(tweet.text) >= 0){
+    if(['putin'].indexOf(tweet.text.toLowerCase()) >= 0){
       putinCount += 1;
       putinPercent = percentage(putinCount, totalCount);
     };
-    if(['CNN', 'cnn'].indexOf(tweet.text) >= 0){
+    if(['cnn'].indexOf(tweet.text.toLowerCase()) >= 0){
       cnnCount += 1;
       cnnPercent = percentage(cnnCount, totalCount);
     };

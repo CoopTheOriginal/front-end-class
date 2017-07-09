@@ -112,24 +112,26 @@ img {
   font-size: 1.25rem;
   font-weight: 500;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .cardText {
   display: grid;
+  text-align: ceter;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-column-gap: 1px;
+  grid-template-rows: 10vh 1vh;
+  grid-column-gap: 5px;
+  align-items: center;
+  justify-items: center;
 }
 
 .number {
-  font-size: 5rem;
+  font-size: 3rem;
   display: flex;
-  text-align: right;
 }
 
-.mentionsSince {
-  font-size: 1.5rem;
+.description {
+  font-size: 1.3rem;
   display: flex;
-  text-align: left;
 }
 
