@@ -2,68 +2,236 @@
 <html>
 <head>
   <title>Real Time Trump Mentions On Twitter</title>
-
-<link rel="shortcut icon" href="favicon.png"><link href="main.bundle.css" rel="stylesheet"><script type="text/javascript" src="main.bundle.js"></script></head>
+  <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+<link href="main.bundle.css" rel="stylesheet"><script type="text/javascript" src="main.bundle.js"></script></head>
 <body>
 
 <!-- Headline -->
   <h1>
     Real Time Trump Mentions On Twitter
   </h1>
-  <p class="time">
-
-  </p>
+  <p class="time"></p>
 
 
-<!-- First Row of Stats -->
+<!-- Stats Cards -->
 <ul class="wrapper">
 
   <li class="cardsItem">
     <div class="card">
       <div class="cardImage">
-        <img src="trump.jpg">
-      </div>
-      <div class="cardContent">
-        <div class="cardTitle">
-          Total Trump Mentions
-        </div>
-
-        <div class="cardText">
-          <div class="totalCount number">0</div>
-          <div class="mentionsSince"></div>
-        </div>
-
-      </div>
-    </div>
-  </li>
-
-  <li class="cardsItem">
-    <div class="card">
-      <div class="cardImage">
-        <img src="favicon.png">
+        <img src="images/bad.jpg">
       </div>
       <div class="cardContent">
         <div class="cardTitle">
           Containing Curse Words
         </div>
-        <p class="cardText">
-          30% of all tweets contain curse words. Naughty naughty.
-        </p>
+
+        <div class="cardText">
+          <div class="badCount number">0</div>
+          <div class="badPercent number">0%</div>
+          <div class="description">Counter</div>
+          <div class="description">Portion</div>
+        </div>
+
+      </div>
+    </div>
+  </li>
+
+  <li class="cardsItem">
+    <div class="card">
+      <div class="cardImage">
+        <img src="images/putin.jpg">
+      </div>
+      <div class="cardContent">
+        <div class="cardTitle">
+          Mentioning Putin
+        </div>
+        <div class="cardText">
+          <div class="putinCount number">0</div>
+          <div class="putinPercent number">0%</div>
+          <div class="description">Counter</div>
+          <div class="description">Portion</div>
+        </div>
       </div>
     </div>
   </li>
   <li class="cardsItem">
     <div class="card">
       <div class="cardImage">
-        <img src="favicon.png">
+        <img src="images/cnn.jpg">
       </div>
       <div class="cardContent">
         <div class="cardTitle">
-          Blank Tweets
+          Mentioning CNN
         </div>
-        <p class="cardText">
-          30% of all tweets come out entirely blank. Lot's of people have nothing to say.
-        </p>
+        <div class="cardText">
+          <div class="cnnCount number">0</div>
+          <div class="cnnPercent number">0%</div>
+          <div class="description">Counter</div>
+          <div class="description">Portion</div>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li class="cardsItem">
+    <div class="card">
+      <div class="cardImage">
+        <img src="images/retweet.jpg">
+      </div>
+      <div class="cardContent">
+        <div class="cardTitle">
+          Is a Retweet
+        </div>
+        <div class="cardText">
+          <div class="retweetCount number">0</div>
+          <div class="retweetPercent number">0%</div>
+          <div class="description">Counter</div>
+          <div class="description">Portion</div>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li class="cardsItem">
+    <div class="card">
+      <div class="cardImage">
+        <img src="images/link.jpg">
+      </div>
+      <div class="cardContent">
+        <div class="cardTitle">
+          Contains a Link
+        </div>
+        <div class="cardText">
+          <div class="linkCount number">0</div>
+          <div class="linkPercent number">0%</div>
+          <div class="description">Counter</div>
+          <div class="description">Portion</div>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li class="cardsItem">
+    <div class="card">
+      <div class="cardImage">
+        <img src="images/trump.jpg">
+      </div>
+      <div class="cardContent">
+        <div class="cardTitle">
+        Less Than 10 Followers
+        </div>
+        <div class="cardText">
+          <div class="tinyCount number">0</div>
+          <div class="tinyPercent number">0%</div>
+          <div class="description">Counter</div>
+          <div class="description">Portion</div>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li class="cardsItem">
+    <div class="card">
+      <div class="cardImage">
+        <img src="images/obama.jpg">
+      </div>
+      <div class="cardContent">
+        <div class="cardTitle">
+        Mentions of Obama
+        </div>
+        <div class="cardText">
+          <div class="obamaCount number">0</div>
+          <div class="obamaPercent number">0%</div>
+          <div class="description">Counter</div>
+          <div class="description">Portion</div>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li class="cardsItem">
+    <div class="card">
+      <div class="cardImage">
+        <img src="images/iphone.jpg">
+      </div>
+      <div class="cardContent">
+        <div class="cardTitle">
+        Tweeted from iPhone
+        </div>
+        <div class="cardText">
+          <div class="iphoneCount number">0</div>
+          <div class="iphonePercent number">0%</div>
+          <div class="description">Counter</div>
+          <div class="description">Portion</div>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li class="cardsItem">
+    <div class="card">
+      <div class="cardImage">
+        <img src="images/android.jpg">
+      </div>
+      <div class="cardContent">
+        <div class="cardTitle">
+        Tweeted from Android
+        </div>
+        <div class="cardText">
+          <div class="androidCount number">0</div>
+          <div class="androidPercent number">0%</div>
+          <div class="description">Counter</div>
+          <div class="description">Portion</div>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li class="cardsItem">
+    <div class="card">
+      <div class="cardImage">
+        <img src="images/fox.jpg">
+      </div>
+      <div class="cardContent">
+        <div class="cardTitle">
+        Mentions of Fox
+        </div>
+        <div class="cardText">
+          <div class="foxCount number">0</div>
+          <div class="foxPercent number">0%</div>
+          <div class="description">Counter</div>
+          <div class="description">Portion</div>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li class="cardsItem">
+    <div class="card">
+      <div class="cardImage">
+        <img src="images/fakenews.jpg">
+      </div>
+      <div class="cardContent">
+        <div class="cardTitle">
+        Mentions of Fake News
+        </div>
+        <div class="cardText">
+          <div class="fakenewsCount number">0</div>
+          <div class="fakenewsPercent number">0%</div>
+          <div class="description">Counter</div>
+          <div class="description">Portion</div>
+        </div>
+      </div>
+    </div>
+  </li>
+  <li class="cardsItem">
+    <div class="card">
+      <div class="cardImage">
+        <img src="images/some.jpg">
+      </div>
+      <div class="cardContent">
+        <div class="cardTitle">
+        More Than 100 followers
+        </div>
+        <div class="cardText">
+          <div class="someCount number">0</div>
+          <div class="somePercent number">0%</div>
+          <div class="description">Counter</div>
+          <div class="description">Portion</div>
+        </div>
       </div>
     </div>
   </li>

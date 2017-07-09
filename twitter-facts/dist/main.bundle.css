@@ -80,29 +80,28 @@ img {
   transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91); }
   .cardImage::before {
     content: "";
-    display: block;
-    padding-top: 56.25%; }
-  @media (min-width: 40rem) {
-    .cardImage::before {
-      padding-top: 66.6%; } }
+    display: block; }
 
 .cardTitle {
   color: #e54f34;
   font-size: 1.25rem;
   font-weight: 500;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  text-align: center; }
 
 .cardText {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-column-gap: 1px; }
+  text-align: ceter;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 10vh 1vh;
+  grid-column-gap: 5px;
+  align-items: center;
+  justify-items: center; }
 
 .number {
-  font-size: 5rem;
-  display: flex;
-  align-items: right; }
+  font-size: 3rem;
+  display: flex; }
 
-.mentionsSince {
-  font-size: 1rem;
-  display: flex;
-  align-items: left; }
+.description {
+  font-size: 1.3rem;
+  display: flex; }

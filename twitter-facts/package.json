@@ -1,12 +1,16 @@
 {
   "name": "twitter-facts",
   "version": "1.0.0",
-  "description": "Random facts about Twitter",
+  "description": "Random facts about tweets about Trump",
   "main": "index.js",
   "scripts": {
     "start": "serve dist",
     "build": "webpack",
     "dev": "webpack-dev-server"
+  },
+  "engines": {
+    "node": "6.9.4",
+    "npm": "5.0.4"
   },
   "author": "Zack Cooper",
   "license": "MIT",

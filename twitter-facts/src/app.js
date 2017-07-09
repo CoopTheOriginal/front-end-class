@@ -1,4 +1,4 @@
-// import { runTwitter } from './twit';
+import { runTwitter } from './twit';
 import { updateTime } from './frontend';
 
 import moment from 'moment';

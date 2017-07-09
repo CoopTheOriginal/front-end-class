@@ -24,7 +24,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html',
       inject: 'head',
-      favicon: './images/favicon.png'
     }),
     new Dotenv({
       path: './.env',
