@@ -1,9 +1,7 @@
 import Twitter from 'twitter';
-import { updateStat } from './frontend';
+import { updateStats } from './frontend';
 
-let badCount, putinCount, cnnCount, retweetCount, linkCount,
-    tinyCount, totalCount, badPercent, putinPercent, cnnPercent,
-    retweetPercent, linkPercent, tinyPercent = 0
+global.total = 0
 
 const client = new Twitter({
   consumer_key: process.env.CONSUMER_KEY,
@@ -12,41 +10,42 @@ const client = new Twitter({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 
-let percentage = (numerator, denominator) => {
-    return (numerator / denominator) * 100
+let textMatch = (text, matcher, className) => {
+  if(text.match(matcher)){ updateStats(className) };
 }
 
 const params = {track: 'Trump', lang: 'en'};
-
 let runTwitter = client.stream('statuses/filter', params, (stream) => {
   stream.on('data', (tweet) => {
 
-    updateStat('totalCount')
+    if(tweet.text != undefined){
+      global.total += 1
+      let text = tweet.text.toLowerCase()
 
-    if(['fuck', 'damn', 'shit', 'bitch'].indexOf(tweet.text.toLowerCase()) >= 0){
-      badCount += 1;
-      badPercent = percentage(badCount, totalCount);
+      let lookups = {
+        'bad': 'fuck|damn|shit|bitch',
+        'putin': 'putin',
+        'cnn': 'cnn',
+        'fox': 'fox',
+        'obama': 'obama',
+        'fakenews': 'fake news|fakenews',
+        'retweet': 'rt @'
+      }
+
+      for (var className in lookups) {
+        textMatch(text, lookups[className], className);
+      };
+    }
+
+    if(tweet.user){
+      let follow_count = tweet.user.followers_count;
+      if(follow_count <= 10){ updateStats('tiny') };
+      if(follow_count > 100){ updateStats('some') };
     };
-    if(['putin'].indexOf(tweet.text.toLowerCase()) >= 0){
-      putinCount += 1;
-      putinPercent = percentage(putinCount, totalCount);
-    };
-    if(['cnn'].indexOf(tweet.text.toLowerCase()) >= 0){
-      cnnCount += 1;
-      cnnPercent = percentage(cnnCount, totalCount);
-    };
-    if('RT @'.indexOf(tweet.text)){
-      retweetCount += 1;
-      retweetPercent = percentage(retweetCount, totalCount);
-    };
-    if('http://'.indexOf(tweet.text)){
-      linkCount += 1;
-      linkPercent = percentage(linkCount, totalCount);
-    };
-    if(tweet.user && tweet.user.followers_count > 10){
-      tinyCount += 1;
-      tinyPercent = percentage(tinyCount, totalCount);
-    };
+    if(tweet.entities && tweet.entities.urls.length > 0){ updateStats('link') };
+    if(tweet.source){ textMatch(tweet.source, 'iphone', 'iphone') };
+    if(tweet.source){ textMatch(tweet.source, 'android', 'android') };
+
   });
   stream.on('error', (error) => {
     console.log('error', error);
